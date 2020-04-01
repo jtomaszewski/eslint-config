@@ -29,10 +29,6 @@ module.exports = {
     'unicorn',
   ],
 
-  env: {
-    browser: true,
-  },
-
   settings: {
     react: {
       version: 'detect',
