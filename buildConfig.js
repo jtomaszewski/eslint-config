@@ -51,8 +51,6 @@ module.exports = function({ react = false } = {}) {
       'import/prefer-default-export': 'off',
       'import/no-default-export': 'error',
 
-      // TODO disable it only for contentful generated file
-      '@typescript-eslint/interface-name-prefix': 'off',
 
       // It's OK if u know how to use it, that's why it's built-in into TS
       '@typescript-eslint/no-non-null-assertion': 'off',
