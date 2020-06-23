@@ -19,7 +19,7 @@ With some slight modifications to some of the defaults on our side.
 
 1. Setup eslint as you would normally do.
 
-2. `npm install -D github:infullmobile/twofront-eslint-config`
+2. `npm install -D github:ailohq/ailo-eslint-config`
 
 3. Extend the config as in the following examples:
 
@@ -29,10 +29,10 @@ With some slight modifications to some of the defaults on our side.
    // .eslintrc.js
    module.exports = {
      parserOptions: {
-       project: ['./tsconfig.json'],
+       project: ["./tsconfig.json"],
      },
 
-     extends: [require.resolve('twofront-eslint-config')],
+     extends: [require.resolve("ailo-eslint-config")],
 
      env: {
        browser: true,
@@ -47,10 +47,10 @@ With some slight modifications to some of the defaults on our side.
    // .eslintrc.js
    module.exports = {
      parserOptions: {
-       project: ['./tsconfig.json'],
+       project: ["./tsconfig.json"],
      },
 
-     extends: [require.resolve('twofront-eslint-config/base')],
+     extends: [require.resolve("ailo-eslint-config/base")],
 
      env: {
        browser: true,
