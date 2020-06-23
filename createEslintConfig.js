@@ -168,6 +168,7 @@ module.exports = function createEslintConfig({ react = false } = {}) {
           "spaced-comment": "off",
         },
       },
+
       // Test files may use dev deps
       {
         files: ["test/**/*", "**.test.{js,jsx,ts,tsx}"],
@@ -177,6 +178,19 @@ module.exports = function createEslintConfig({ react = false } = {}) {
             {
               devDependencies: true,
             },
+          ],
+        },
+      },
+
+      // Enable TS-only rules on .ts files only
+      {
+        files: ["*.ts", "*.tsx"],
+        rules: {
+          // All class methods are `public` by default in JS,
+          // so writing that keyword is unneeded.
+          "@typescript-eslint/explicit-member-accessibility": [
+            "error",
+            { accessibility: "no-public" },
           ],
         },
       },
