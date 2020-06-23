@@ -23,6 +23,24 @@ With some slight modifications to some of the defaults on our side.
 
 3. Extend the config as in the following examples:
 
+   ## Node.js
+
+   ```js
+   // .eslintrc.js
+   module.exports = {
+     parserOptions: {
+       project: ["./tsconfig.json"],
+     },
+
+     extends: [require.resolve("ailo-eslint-config/configs/node")],
+
+     env: {
+       browser: true,
+       jest: true,
+     },
+   };
+   ```
+
    ## React
 
    ```js
@@ -32,25 +50,7 @@ With some slight modifications to some of the defaults on our side.
        project: ["./tsconfig.json"],
      },
 
-     extends: [require.resolve("ailo-eslint-config")],
-
-     env: {
-       browser: true,
-       jest: true,
-     },
-   };
-   ```
-
-   ## Base (no React)
-
-   ```js
-   // .eslintrc.js
-   module.exports = {
-     parserOptions: {
-       project: ["./tsconfig.json"],
-     },
-
-     extends: [require.resolve("ailo-eslint-config/base")],
+     extends: [require.resolve("ailo-eslint-config/configs/react-native")],
 
      env: {
        browser: true,
