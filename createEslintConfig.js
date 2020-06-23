@@ -17,7 +17,7 @@ module.exports = function createEslintConfig({ react = false } = {}) {
       "plugin:jest/recommended",
       "plugin:promise/recommended",
       "plugin:unicorn/recommended",
-      "prettier",
+      "plugin:prettier/recommended",
       react && "prettier/react",
       "prettier/@typescript-eslint",
     ].filter(Boolean),
@@ -101,6 +101,16 @@ module.exports = function createEslintConfig({ react = false } = {}) {
         },
       ],
 
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          argsIgnorePattern: "^_",
+          vars: "all",
+          args: "after-used",
+          ignoreRestSiblings: true,
+        },
+      ],
+
       // Common abbreviations are known and readable
       "unicorn/prevent-abbreviations": "off",
 
@@ -111,6 +121,14 @@ module.exports = function createEslintConfig({ react = false } = {}) {
       "unicorn/no-abusive-eslint-disable": "off",
 
       "unicorn/no-for-loop": "off",
+
+      // This is cool, but in Ailo we use local path mappings a lot
+      // and it would be tricky to force it in all the repos.
+      "import/no-cycle": "off",
+
+      // It's nice as it pushes the dev to not write class-based code,
+      // but this would invalidate e.g. all of Ailo Repository classes.
+      "class-methods-use-this": "off",
 
       ...(react
         ? {
