@@ -1,6 +1,6 @@
 {
   "name": "@ailo/eslint-config",
-  "main": "configs/node.js",
+  "main": "configs/ts-node.js",
   "version": "1.0.0",
   "license": "MIT",
   "dependencies": {

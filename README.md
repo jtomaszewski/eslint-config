@@ -21,9 +21,7 @@ With some slight modifications to some of the defaults on our side.
 
 2. `npm install -D github:ailohq/ailo-eslint-config`
 
-3. Extend the config as in the following examples:
-
-   ## Node.js
+3. Extend the config as in the following example:
 
    ```js
    // .eslintrc.js
@@ -32,7 +30,7 @@ With some slight modifications to some of the defaults on our side.
        project: ["./tsconfig.json"],
      },
 
-     extends: [require.resolve("@ailo/eslint-config/configs/node")],
+     extends: [require.resolve("@ailo/eslint-config/configs/ts-node")],
 
      env: {
        browser: true,
@@ -41,20 +39,4 @@ With some slight modifications to some of the defaults on our side.
    };
    ```
 
-   ## React
-
-   ```js
-   // .eslintrc.js
-   module.exports = {
-     parserOptions: {
-       project: ["./tsconfig.json"],
-     },
-
-     extends: [require.resolve("@ailo/eslint-config/configs/react-native")],
-
-     env: {
-       browser: true,
-       jest: true,
-     },
-   };
-   ```
+   Replace `ts-node` with other name of another [config file](https://github.com/ailohq/ailo-eslint-config/tree/master/configs) if your environment differ.
