@@ -32,7 +32,7 @@ With some slight modifications to some of the defaults on our side.
        project: ["./tsconfig.json"],
      },
 
-     extends: [require.resolve("ailo-eslint-config/configs/node")],
+     extends: [require.resolve("@ailo/eslint-config/configs/node")],
 
      env: {
        browser: true,
@@ -50,7 +50,7 @@ With some slight modifications to some of the defaults on our side.
        project: ["./tsconfig.json"],
      },
 
-     extends: [require.resolve("ailo-eslint-config/configs/react-native")],
+     extends: [require.resolve("@ailo/eslint-config/configs/react-native")],
 
      env: {
        browser: true,
