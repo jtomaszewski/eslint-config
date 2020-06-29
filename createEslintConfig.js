@@ -7,7 +7,7 @@ module.exports = function createEslintConfig({ react = false } = {}) {
 
     extends: [
       react ? "airbnb-typescript" : "airbnb-typescript/base",
-      "airbnb/hooks",
+      react && "airbnb/hooks",
       "plugin:import/errors",
       "plugin:import/warnings",
       "plugin:import/typescript",
