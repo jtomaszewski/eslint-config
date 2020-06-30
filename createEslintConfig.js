@@ -130,6 +130,10 @@ module.exports = function createEslintConfig({ react = false } = {}) {
       // but this would invalidate e.g. all of Ailo Repository classes.
       "class-methods-use-this": "off",
 
+      // We use `transact(trx, trx => ...)` quite heavily,
+      // let's skip this for rule for that case for now.
+      "no-shadow": ["warn", { allow: ["trx"] }],
+
       ...(react
         ? {
             // Sometimes it's ok
