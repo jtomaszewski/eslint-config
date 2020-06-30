@@ -19,7 +19,7 @@ With some slight modifications to some of the defaults on our side.
 
 1. Setup eslint as you would normally do.
 
-2. `npm install -D github:ailohq/ailo-eslint-config`
+2. `yarn add -D @ailo/eslint-config`
 
 3. Extend the config as in the following example:
 
@@ -40,3 +40,9 @@ With some slight modifications to some of the defaults on our side.
    ```
 
    Replace `ts-node` with other name of another [config file](https://github.com/ailohq/ailo-eslint-config/tree/master/configs) if your environment differ.
+
+# Releasing
+
+```sh
+yarn publish
+```
