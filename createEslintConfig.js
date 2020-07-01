@@ -44,7 +44,11 @@ module.exports = function createEslintConfig({ react = false } = {}) {
     },
 
     rules: {
+      // Better to avoid one-line `if`s, especially since that rule has the `--fix` option
       "curly": "error",
+
+      // With prettier around, there's little danger that `i++` will bring unexpected results
+      "no-plusplus": "off",
 
       // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
       "no-prototype-builtins": "off",
