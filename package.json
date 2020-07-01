@@ -1,7 +1,7 @@
 {
   "name": "@ailo/eslint-config",
   "main": "configs/ts-node.js",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^2.22.0",
