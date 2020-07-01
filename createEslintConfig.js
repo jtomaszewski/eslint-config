@@ -44,6 +44,8 @@ module.exports = function createEslintConfig({ react = false } = {}) {
     },
 
     rules: {
+      "curly": "error",
+
       // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
       "no-prototype-builtins": "off",
 
