@@ -178,6 +178,15 @@ module.exports = function createEslintConfig({ react = false } = {}) {
           "spaced-comment": "off",
         },
       },
+      
+      // Knex generates migrations in such a way that they don't have their functions named
+      // Let's stay with it, it's not that bad
+      {
+        files: ["database/migrations/*"],
+        rules: {
+          "func-names": "off",
+        },
+      },
 
       // Test files may use dev deps
       {
