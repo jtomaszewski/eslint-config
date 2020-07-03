@@ -45,7 +45,7 @@ module.exports = function createEslintConfig({ react = false } = {}) {
 
     rules: {
       // Better to avoid one-line `if`s, especially since that rule has the `--fix` option
-      "curly": "error",
+      curly: "error",
 
       // With prettier around, there's little danger that `i++` will bring unexpected results
       "no-plusplus": "off",
@@ -178,7 +178,15 @@ module.exports = function createEslintConfig({ react = false } = {}) {
           "spaced-comment": "off",
         },
       },
-      
+
+      // We don't support import/export yet in node.js files not processed by babel
+      {
+        files: [".*.js", "*.js", "*.*.js", "database/**/*.js", "ops/**/*.js"],
+        rules: {
+          "@typescript-eslint/no-var-requires": "off",
+        },
+      },
+
       // Knex generates migrations in such a way that they don't have their functions named
       // Let's stay with it, it's not that bad
       {
