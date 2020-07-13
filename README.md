@@ -41,6 +41,13 @@ With some slight modifications to some of the defaults on our side.
 
    Replace `ts-node` with other name of another [config file](https://github.com/ailohq/ailo-eslint-config/tree/master/configs) if your environment differ.
 
+## Adding it to existing codebase
+
+If your codebase is large and introducing this config makes eslint yell with hundreds of error, you might find following advices to be useful:
+
+- keep a list of ignored "legacy" files by adding `overrides` to your `.eslintrc.js` that ignores some rules in some of your files (until they get improved)
+- use https://github.com/IanVS/eslint-nibble
+
 # Releasing
 
 ```sh
