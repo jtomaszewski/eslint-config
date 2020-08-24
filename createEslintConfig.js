@@ -88,6 +88,15 @@ module.exports = function createEslintConfig({ react = false } = {}) {
         { ignoreParameters: true },
       ],
 
+      // Allow for `error` and `cause` as error variable names in try-catch expressions
+      // ( `cause` is useful in e.g. Sentry SDK https://github.com/getsentry/sentry-javascript/issues/1401 )
+      "unicorn/catch-error-name": [
+        "error",
+        {
+          ignore: ["cause"],
+        },
+      ],
+
       // With prettier around, they aren't that bad
       "no-nested-ternary": "off",
       "unicorn/no-nested-ternary": "off",
