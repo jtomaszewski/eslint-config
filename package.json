@@ -1,7 +1,7 @@
 {
   "name": "@ailo/eslint-config",
   "main": "configs/ts-node.js",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "repository": "https://github.com/ailohq/eslint-config",
   "license": "MIT",
   "dependencies": {
