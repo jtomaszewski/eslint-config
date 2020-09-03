@@ -19,13 +19,14 @@ With some slight modifications to some of the defaults on our side.
 
 1. Setup eslint as you would normally do.
 
-2. `yarn add -D @ailo/eslint-config`
+2. `yarn add -D @ailo/eslint-config @typescript-eslint/parser`
 
 3. Extend the config as in the following example:
 
    ```js
    // .eslintrc.js
    module.exports = {
+     parser: "@typescript-eslint/parser",
      parserOptions: {
        project: ["./tsconfig.json"],
      },
