@@ -207,7 +207,10 @@ module.exports = function createEslintConfig({ react = false } = {}) {
 
       // Test files may use dev deps
       {
-        files: ["{test,test_modules}/**/*", "**.test.{js,jsx,ts,tsx}"],
+        files: [
+          "{test,test_utils,test-utils,test_modules,test-modules}/**/*",
+          "**.test.{js,jsx,ts,tsx}",
+        ],
         rules: {
           "import/no-extraneous-dependencies": [
             "error",
