@@ -52,5 +52,5 @@ If your codebase is large and introducing this config makes eslint yell with hun
 # Releasing
 
 ```sh
-yarn publish
+yarn publish && git push
 ```
