@@ -4,6 +4,9 @@
   "version": "2.0.3",
   "repository": "https://github.com/ailohq/eslint-config",
   "license": "MIT",
+  "scripts": {
+    "release": "yarn publish && git push"
+  },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "eslint-config-airbnb-typescript": "9.0.0",
