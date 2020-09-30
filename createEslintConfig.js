@@ -164,6 +164,20 @@ module.exports = function createEslintConfig({ react = false } = {}) {
       // let's skip this for rule for that case for now.
       "no-shadow": ["warn", { allow: ["trx"] }],
 
+      "@typescript-eslint/restrict-template-expressions": [
+        "warn",
+        {
+          // Why not
+          allowNumber: true,
+          // Why not
+          allowBoolean: true,
+          // That's what `any` is for
+          allowAny: true,
+          // Why not
+          allowNullish: true,
+        },
+      ],
+
       ...(react
         ? {
             // Sometimes it's ok
