@@ -62,6 +62,9 @@ module.exports = function createEslintConfig({ react = false } = {}) {
       // It's OK if u know how to use it, that's why it's built-in into TS
       "@typescript-eslint/no-non-null-assertion": "off",
 
+      // Functional programming FTW
+      "unicorn/no-reduce": "off",
+
       // This might be nice, but it's too late now to enforce it
       "@typescript-eslint/explicit-function-return-type": "off",
       // Makes no sense to allow type inferrence for expression parameters, but require typing the response
@@ -144,6 +147,18 @@ module.exports = function createEslintConfig({ react = false } = {}) {
       // It's nice as it pushes the dev to not write class-based code,
       // but this would invalidate e.g. all of Ailo Repository classes.
       "class-methods-use-this": "off",
+
+      // Contradicts `consistent-return` rule if we actally have a fn
+      // that returns something like `string | undefined`.
+      "unicorn/no-useless-undefined": "off",
+
+      // This makes complete sense especially in TS
+      // if you use functions that have type predicates,
+      // e.g. `.filter(isNumber)`
+      "unicorn/no-fn-reference-in-iterator": "off",
+
+      // Doesn't make sense anymore (in ES5-compliant environments)
+      radix: "off",
 
       // We use `transact(trx, trx => ...)` quite heavily,
       // let's skip this for rule for that case for now.
