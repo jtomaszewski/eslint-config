@@ -178,6 +178,15 @@ module.exports = function createEslintConfig({ react = false } = {}) {
         },
       ],
 
+      // They are nice in theory, but in practice if you have at least one `any` touching your codebase,
+      // you'll end up with a lot of eslint exceptions...
+      //
+      // We already have a warning about not using `any` explicitly,
+      // let's leave it that as the standard for now.
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+
       ...(react
         ? {
             // Sometimes it's ok
