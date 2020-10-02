@@ -65,6 +65,10 @@ module.exports = function createEslintConfig({ react = false } = {}) {
       // Functional programming FTW
       "unicorn/no-reduce": "off",
 
+      // What if I want to export custom `Error` classes in the same file that uses them?
+      // It's a good example when multiple classes in one file is fine.
+      "max-classes-per-file": "off",
+
       // This might be nice, but it's too late now to enforce it
       "@typescript-eslint/explicit-function-return-type": "off",
       // Makes no sense to allow type inferrence for expression parameters, but require typing the response
