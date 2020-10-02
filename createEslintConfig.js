@@ -164,19 +164,8 @@ module.exports = function createEslintConfig({ react = false } = {}) {
       // let's skip this for rule for that case for now.
       "no-shadow": ["warn", { allow: ["trx"] }],
 
-      "@typescript-eslint/restrict-template-expressions": [
-        "warn",
-        {
-          // Why not
-          allowNumber: true,
-          // Why not
-          allowBoolean: true,
-          // That's what `any` is for
-          allowAny: true,
-          // Why not
-          allowNullish: true,
-        },
-      ],
+      // Nice in theory, but impractical... Printing numbers, undefineds, nulls, errors is sometimes still desired.
+      "@typescript-eslint/restrict-template-expressions": "off",
 
       // They are nice in theory, but in practice if you have at least one `any` touching your codebase,
       // you'll end up with a lot of eslint exceptions...
