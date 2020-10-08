@@ -57,6 +57,8 @@ module.exports = function createEslintConfig({ react = false } = {}) {
       "import/prefer-default-export": "off",
       "import/no-default-export": "error",
 
+      "import/order": ["warn"],
+
       "@typescript-eslint/no-floating-promises": "warn",
 
       // It's OK if u know how to use it, that's why it's built-in into TS
