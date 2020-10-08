@@ -181,6 +181,10 @@ module.exports = function createEslintConfig({ react = false } = {}) {
       "@typescript-eslint/no-unsafe-call": "off",
       "@typescript-eslint/no-unsafe-return": "off",
 
+      // Fix for https://github.com/typescript-eslint/typescript-eslint/issues/2552
+      "no-shadow": "off",
+      "@typescript-eslint/no-shadow": ["warn"],
+
       ...(react
         ? {
             // Sometimes it's ok
@@ -263,6 +267,26 @@ module.exports = function createEslintConfig({ react = false } = {}) {
             "error",
             { accessibility: "no-public" },
           ],
+        },
+      },
+
+      {
+        // GraphQLSchemaModule files
+        files: "src/api/**/module.ts",
+        rules: {
+          // It provides false negatives for gql modules using `GraphQLResolvers` type def
+          "@typescript-eslint/explicit-module-boundary-types": "off",
+          // nulls are actually useful in GQL modules
+          "unicorn/no-null": "off",
+        },
+      },
+
+      // Integration tests often test GQL which often return nulls
+      // - let them use nulls
+      {
+        files: "*.integration.test.*",
+        rules: {
+          "unicorn/no-null": "off",
         },
       },
     ],
