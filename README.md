@@ -23,6 +23,8 @@ With some slight modifications to some of the defaults on our side.
 
 3. Extend the config as in the following example:
 
+   Node.js service:
+
    ```js
    // .eslintrc.js
    module.exports = {
@@ -30,9 +32,24 @@ With some slight modifications to some of the defaults on our side.
      parserOptions: {
        project: ["./tsconfig.json"],
      },
-
      extends: [require.resolve("@ailo/eslint-config/configs/ts-node")],
+     env: {
+       node: true,
+       jest: true,
+     },
+   };
+   ```
+   
+   Front-end React app:
 
+   ```js
+   // .eslintrc.js
+   module.exports = {
+     parser: "@typescript-eslint/parser",
+     parserOptions: {
+       project: ["./tsconfig.json"],
+     },
+     extends: [require.resolve("@ailo/eslint-config/configs/ts-react")],
      env: {
        browser: true,
        jest: true,
