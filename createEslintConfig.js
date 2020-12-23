@@ -183,6 +183,28 @@ module.exports = function createEslintConfig({ react = false } = {}) {
       "@typescript-eslint/no-unsafe-call": "off",
       "@typescript-eslint/no-unsafe-return": "off",
 
+      // Same as https://github.com/airbnb/javascript/blob/63098cbb6c05376dbefc9a91351f5727540c1ce1/packages/eslint-config-airbnb-base/rules/style.js#L339 ,
+      // but without banning ForOfStatement , as `for await` is actually a very useful and readable construction.
+      // ( https://github.com/airbnb/javascript/issues/1271 )
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "ForInStatement",
+          message:
+            "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.",
+        },
+        {
+          selector: "LabeledStatement",
+          message:
+            "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.",
+        },
+        {
+          selector: "WithStatement",
+          message:
+            "`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
+        },
+      ],
+
       // Fix for https://github.com/typescript-eslint/typescript-eslint/issues/2552
       "no-shadow": "off",
       "@typescript-eslint/no-shadow": ["warn"],
