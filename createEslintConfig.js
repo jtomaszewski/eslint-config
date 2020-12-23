@@ -1,4 +1,8 @@
-module.exports = function createEslintConfig({ react = false } = {}) {
+module.exports = function createEslintConfig({
+  react = false,
+  jest = true,
+  cypress = false,
+} = {}) {
   return {
     parser: "@typescript-eslint/parser",
     parserOptions: {
@@ -14,7 +18,8 @@ module.exports = function createEslintConfig({ react = false } = {}) {
       "plugin:@typescript-eslint/eslint-recommended",
       "plugin:@typescript-eslint/recommended",
       "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      "plugin:jest/recommended",
+      jest && "plugin:jest/recommended",
+      cypress && "plugin:cypress/recommended",
       "plugin:promise/recommended",
       "plugin:unicorn/recommended",
       "plugin:prettier/recommended",
@@ -25,7 +30,8 @@ module.exports = function createEslintConfig({ react = false } = {}) {
     plugins: [
       "@typescript-eslint/eslint-plugin",
       react && "react-hooks",
-      "jest",
+      jest && "jest",
+      cypress && "cypress",
       "promise",
       "unicorn",
     ].filter(Boolean),

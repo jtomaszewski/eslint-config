@@ -39,7 +39,7 @@ With some slight modifications to some of the defaults on our side.
      },
    };
    ```
-   
+
    Front-end React app:
 
    ```js
@@ -53,6 +53,24 @@ With some slight modifications to some of the defaults on our side.
      env: {
        browser: true,
        jest: true,
+     },
+   };
+   ```
+
+   Cypress:
+
+   ```js
+   // .eslintrc.js
+   module.exports = {
+     parser: "@typescript-eslint/parser",
+     parserOptions: {
+       project: ["./tsconfig.json"],
+     },
+     extends: [require.resolve("@ailo/eslint-config/configs/ts-cypress")],
+     env: {
+       browser: true,
+       es6: true,
+       node: true,
      },
    };
    ```
