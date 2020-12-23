@@ -166,10 +166,6 @@ module.exports = function createEslintConfig({ react = false } = {}) {
       // Doesn't make sense anymore (in ES5-compliant environments)
       radix: "off",
 
-      // We use `transact(trx, trx => ...)` quite heavily,
-      // let's skip this for rule for that case for now.
-      "no-shadow": ["warn", { allow: ["trx"] }],
-
       // Nice in theory, but impractical... Printing numbers, undefineds, nulls, errors is sometimes still desired.
       "@typescript-eslint/restrict-template-expressions": "off",
 
@@ -207,7 +203,9 @@ module.exports = function createEslintConfig({ react = false } = {}) {
 
       // Fix for https://github.com/typescript-eslint/typescript-eslint/issues/2552
       "no-shadow": "off",
-      "@typescript-eslint/no-shadow": ["warn"],
+      // We use `transact(trx, trx => ...)` quite heavily,
+      // let's skip this for rule for that case for now.
+      "@typescript-eslint/no-shadow": ["warn", { allow: ["trx"] }],
 
       ...(react
         ? {
