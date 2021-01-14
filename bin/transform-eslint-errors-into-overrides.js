@@ -37,7 +37,7 @@ async function main() {
 
       rules: Object.fromEntries(ruleIds.map((ruleId) => [ruleId, "off"])),
     };
-    acc[slug].files.push(filePath.replace(__dirname + path.sep, ""));
+    acc[slug].files.push(filePath.replace(process.cwd() + path.sep, ""));
 
     return acc;
   }, {});
