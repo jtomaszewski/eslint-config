@@ -81,7 +81,7 @@ With some slight modifications to some of the defaults on our side.
 
 If your codebase is large and introducing this config makes eslint yell with hundreds of errors, you might find following advices to be useful:
 
-- keep a list of ignored "legacy" files by adding `overrides` to your `.eslintrc.js` that ignores some rules in some of your files (until they get improved)
+- keep a list of ignored "legacy" files by adding `overrides` to your `.eslintrc.js` that ignores some rules in some of your files (until they get improved). You can generate this automatically using [transform-eslint-errors-into-overrides](./bin/transform-eslint-errors-into-overrides.js) script.
 - use https://github.com/IanVS/eslint-nibble
 
 # Releasing
