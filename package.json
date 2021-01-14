@@ -4,6 +4,9 @@
   "version": "2.3.1",
   "repository": "https://github.com/ailohq/eslint-config",
   "license": "MIT",
+  "bin": {
+    "transform-eslint-errors-into-overrides": "./bin/transform-eslint-errors-into-overrides.js"
+  },
   "scripts": {
     "release": "yarn publish && git push"
   },
