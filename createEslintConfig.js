@@ -66,6 +66,7 @@ module.exports = function createEslintConfig({
       "import/order": ["warn"],
 
       "@typescript-eslint/no-floating-promises": "warn",
+      "no-void": ["error", { allowAsStatement: true }],
 
       // It's OK if u know how to use it, that's why it's built-in into TS
       "@typescript-eslint/no-non-null-assertion": "off",
