@@ -1,3 +1,7 @@
 const createEslintConfig = require("../createEslintConfig");
 
-module.exports = createEslintConfig({ react: false });
+module.exports = createEslintConfig({
+  typescript: true,
+  node: true,
+  jest: true,
+});

@@ -1,6 +1,8 @@
 module.exports = function createEslintConfig({
+  typescript = false,
+  node = false,
   react = false,
-  jest = true,
+  jest = false,
   cypress = false,
 } = {}) {
   return {
@@ -9,26 +11,40 @@ module.exports = function createEslintConfig({
       project: ["./tsconfig.json"],
     },
 
+    env: {
+      browser: react || cypress,
+      es6: cypress,
+      node,
+      jest,
+    },
+
     extends: [
-      react ? "airbnb-typescript" : "airbnb-typescript/base",
+      typescript
+        ? react
+          ? "airbnb-typescript"
+          : "airbnb-typescript/base"
+        : react
+        ? "airbnb"
+        : "airbnb-base",
       react && "airbnb/hooks",
       "plugin:import/errors",
       "plugin:import/warnings",
-      "plugin:import/typescript",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      typescript && "plugin:import/typescript",
+      typescript && "plugin:@typescript-eslint/eslint-recommended",
+      typescript && "plugin:@typescript-eslint/recommended",
+      typescript &&
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
       jest && "plugin:jest/recommended",
       cypress && "plugin:cypress/recommended",
       "plugin:promise/recommended",
       "plugin:unicorn/recommended",
       "plugin:prettier/recommended",
       react && "prettier/react",
-      "prettier/@typescript-eslint",
+      typescript && "prettier/@typescript-eslint",
     ].filter(Boolean),
 
     plugins: [
-      "@typescript-eslint/eslint-plugin",
+      typescript && "@typescript-eslint/eslint-plugin",
       react && "react-hooks",
       jest && "jest",
       cypress && "cypress",
@@ -65,11 +81,12 @@ module.exports = function createEslintConfig({
 
       "import/order": ["warn"],
 
-      "@typescript-eslint/no-floating-promises": "warn",
       "no-void": ["error", { allowAsStatement: true }],
 
       // It's OK if u know how to use it, that's why it's built-in into TS
-      "@typescript-eslint/no-non-null-assertion": "off",
+      [typescript
+        ? "@typescript-eslint/no-non-null-assertion"
+        : "no-non-null-assertion"]: "off",
 
       // Functional programming FTW
       "unicorn/no-reduce": "off",
@@ -78,31 +95,8 @@ module.exports = function createEslintConfig({
       // It's a good example when multiple classes in one file is fine.
       "max-classes-per-file": "off",
 
-      // This might be nice, but it's too late now to enforce it
-      "@typescript-eslint/explicit-function-return-type": "off",
-      // Makes no sense to allow type inferrence for expression parameters, but require typing the response
-      // "@typescript-eslint/explicit-function-return-type": [
-      //   "error",
-      //   { "allowExpressions": true, "allowTypedFunctionExpressions": true }
-      // ],
-
       // It's good if used well (i.e. when defining a var that replaces a function argument)
       "no-underscore-dangle": "off",
-
-      // It's bugged now, too many false positives
-      // ( https://github.com/typescript-eslint/typescript-eslint/issues/522 )
-      "@typescript-eslint/unbound-method": "off",
-
-      // Somehow TS doesn't infer the type for me in a code like this:
-      // ```ts
-      // const goToNextQuestion = useCallback(
-      //   (validate = true) => {
-      //     ...
-      // ```
-      "@typescript-eslint/no-inferrable-types": [
-        "warn",
-        { ignoreParameters: true },
-      ],
 
       // Allow for `error` and `cause` as error variable names in try-catch expressions
       // ( `cause` is useful in e.g. Sentry SDK https://github.com/getsentry/sentry-javascript/issues/1401 )
@@ -122,17 +116,19 @@ module.exports = function createEslintConfig({
         "error",
         { functions: false, classes: true, variables: true },
       ],
-      "@typescript-eslint/no-use-before-define": [
-        "error",
-        {
-          functions: false,
-          classes: true,
-          variables: true,
-          typedefs: true,
-        },
-      ],
+      ...(typescript && {
+        "@typescript-eslint/no-use-before-define": [
+          "error",
+          {
+            functions: false,
+            classes: true,
+            variables: true,
+            typedefs: true,
+          },
+        ],
+      }),
 
-      "@typescript-eslint/no-unused-vars": [
+      [typescript ? "@typescript-eslint/no-unused-vars" : "no-unused-vars"]: [
         "warn",
         {
           argsIgnorePattern: "^_",
@@ -173,18 +169,45 @@ module.exports = function createEslintConfig({
       // Doesn't make sense anymore (in ES5-compliant environments)
       radix: "off",
 
-      // Nice in theory, but impractical... Printing numbers, undefineds, nulls, errors is sometimes still desired.
-      "@typescript-eslint/restrict-template-expressions": "off",
+      ...(typescript && {
+        "@typescript-eslint/no-floating-promises": "warn",
 
-      // They are nice in theory, but in practice if you have at least one `any` touching your codebase,
-      // you'll end up with a lot of eslint exceptions...
-      //
-      // We already have a warning about not using `any` explicitly,
-      // let's leave it that as the standard for now.
-      "@typescript-eslint/no-unsafe-member-access": "off",
-      "@typescript-eslint/no-unsafe-assignment": "off",
-      "@typescript-eslint/no-unsafe-call": "off",
-      "@typescript-eslint/no-unsafe-return": "off",
+        // This might be nice, but it's too late now to enforce it
+        "@typescript-eslint/explicit-function-return-type": "off",
+        // Makes no sense to allow type inferrence for expression parameters, but require typing the response
+        // "@typescript-eslint/explicit-function-return-type": [
+        //   "error",
+        //   { "allowExpressions": true, "allowTypedFunctionExpressions": true }
+        // ],
+
+        // It's bugged now, too many false positives
+        // ( https://github.com/typescript-eslint/typescript-eslint/issues/522 )
+        "@typescript-eslint/unbound-method": "off",
+
+        // Somehow TS doesn't infer the type for me in a code like this:
+        // ```ts
+        // const goToNextQuestion = useCallback(
+        //   (validate = true) => {
+        //     ...
+        // ```
+        "@typescript-eslint/no-inferrable-types": [
+          "warn",
+          { ignoreParameters: true },
+        ],
+
+        // Nice in theory, but impractical... Printing numbers, undefineds, nulls, errors is sometimes still desired.
+        "@typescript-eslint/restrict-template-expressions": "off",
+
+        // They are nice in theory, but in practice if you have at least one `any` touching your codebase,
+        // you'll end up with a lot of eslint exceptions...
+        //
+        // We already have a warning about not using `any` explicitly,
+        // let's leave it that as the standard for now.
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
+      }),
 
       // Same as https://github.com/airbnb/javascript/blob/63098cbb6c05376dbefc9a91351f5727540c1ce1/packages/eslint-config-airbnb-base/rules/style.js#L339 ,
       // but without banning ForOfStatement , as `for await` is actually a very useful and readable construction.
@@ -208,11 +231,17 @@ module.exports = function createEslintConfig({
         },
       ],
 
-      // Fix for https://github.com/typescript-eslint/typescript-eslint/issues/2552
-      "no-shadow": "off",
-      // We use `transact(trx, trx => ...)` quite heavily,
-      // let's skip this for rule for that case for now.
-      "@typescript-eslint/no-shadow": ["warn", { allow: ["trx"] }],
+      ...(typescript
+        ? {
+            // Fix for https://github.com/typescript-eslint/typescript-eslint/issues/2552
+            "no-shadow": "off",
+            // We use `transact(trx, trx => ...)` quite heavily,
+            // let's skip this for rule for that case for now.
+            "@typescript-eslint/no-shadow": ["warn", { allow: ["trx"] }],
+          }
+        : {
+            "no-shadow": ["warn", { allow: ["trx"] }],
+          }),
 
       ...(react
         ? {
@@ -254,7 +283,7 @@ module.exports = function createEslintConfig({
       },
 
       // We don't support import/export yet in node.js files not processed by babel
-      {
+      typescript && {
         files: [".*.js", "*.js", "*.*.js", "database/**/*.js", "ops/**/*.js"],
         rules: {
           "@typescript-eslint/no-var-requires": "off",
@@ -287,7 +316,7 @@ module.exports = function createEslintConfig({
       },
 
       // Enable TS-only rules on .ts files only
-      {
+      typescript && {
         files: ["*.ts", "*.tsx"],
         rules: {
           // All class methods are `public` by default in JS,
@@ -301,10 +330,12 @@ module.exports = function createEslintConfig({
 
       {
         // GraphQLSchemaModule files
-        files: "src/api/**/module.ts",
+        files: "src/api/**/module.{js,ts}",
         rules: {
-          // It provides false negatives for gql modules using `GraphQLResolvers` type def
-          "@typescript-eslint/explicit-module-boundary-types": "off",
+          ...(typescript && {
+            // It provides false negatives for gql modules using `GraphQLResolvers` type def
+            "@typescript-eslint/explicit-module-boundary-types": "off",
+          }),
           // nulls are actually useful in GQL modules
           "unicorn/no-null": "off",
         },
@@ -318,6 +349,6 @@ module.exports = function createEslintConfig({
           "unicorn/no-null": "off",
         },
       },
-    ],
+    ].filter(Boolean),
   };
 };

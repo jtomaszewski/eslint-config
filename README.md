@@ -33,10 +33,16 @@ With some slight modifications to some of the defaults on our side.
        project: ["./tsconfig.json"],
      },
      extends: [require.resolve("@ailo/eslint-config/configs/ts-node")],
-     env: {
-       node: true,
-       jest: true,
-     },
+   };
+   ```
+
+   Node.js service without TS:
+
+   ```js
+   // .eslintrc.js
+   module.exports = {
+     parser: "babel-eslint",
+     extends: [require.resolve("@ailo/eslint-config/configs/node")],
    };
    ```
 
@@ -50,10 +56,6 @@ With some slight modifications to some of the defaults on our side.
        project: ["./tsconfig.json"],
      },
      extends: [require.resolve("@ailo/eslint-config/configs/ts-react")],
-     env: {
-       browser: true,
-       jest: true,
-     },
    };
    ```
 
@@ -67,15 +69,10 @@ With some slight modifications to some of the defaults on our side.
        project: ["./tsconfig.json"],
      },
      extends: [require.resolve("@ailo/eslint-config/configs/ts-cypress")],
-     env: {
-       browser: true,
-       es6: true,
-       node: true,
-     },
    };
    ```
 
-   Replace `ts-node` with other name of another [config file](https://github.com/ailohq/ailo-eslint-config/tree/master/configs) if your environment differ.
+   Replace `ts-node` with other name of another [config file](https://github.com/ailohq/ailo-eslint-config/tree/master/configs) if your environment differs.
 
 ## Adding it to existing codebase
 

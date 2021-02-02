@@ -1,7 +1,7 @@
 const createEslintConfig = require("../createEslintConfig");
 
 module.exports = createEslintConfig({
-  react: false,
-  jest: false,
+  typescript: true,
+  node: true,
   cypress: true,
 });
