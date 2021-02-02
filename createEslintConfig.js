@@ -83,6 +83,8 @@ module.exports = function createEslintConfig({
 
       "no-void": ["error", { allowAsStatement: true }],
 
+      "no-debugger": ["warn"],
+
       // It's OK if u know how to use it, that's why it's built-in into TS
       [typescript
         ? "@typescript-eslint/no-non-null-assertion"
