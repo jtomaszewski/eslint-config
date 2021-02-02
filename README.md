@@ -2,11 +2,11 @@
 
 ESLint config to be used in some of our projects, that includes recommended rules of the following plugins:
 
-- eslint-config-airbnb-typescript
-- eslint-plugin-react (optionally)
-- eslint-plugin-react-hooks (optionally)
-- eslint-plugin-jsx-a11y (optionally)
-- eslint-config-prettier (we assume that you `prettier` your files on your own, outside eslint)
+- eslint-config-airbnb / eslint-config-airbnb-base / eslint-config-airbnb-typescript
+- eslint-plugin-react
+- eslint-plugin-react-hooks
+- eslint-plugin-jsx-a11y
+- eslint-config-prettier
 - eslint-import-resolver-typescript
 - eslint-plugin-import
 - eslint-plugin-jest
