@@ -32,7 +32,7 @@ async function main() {
     const ruleIds = [...new Set(messages.map((rule) => rule.ruleId))];
     const slug = ruleIds.sort().join("#");
 
-    acc[slug] = acc[slug] ?? {
+    acc[slug] = acc[slug] || {
       files: [],
 
       rules: Object.fromEntries(ruleIds.map((ruleId) => [ruleId, "off"])),
