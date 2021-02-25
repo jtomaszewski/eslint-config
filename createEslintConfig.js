@@ -301,19 +301,24 @@ module.exports = function createEslintConfig({
         },
       },
 
-      // Test files may use dev deps
       {
+        // Test files
         files: [
           "**/{test,test_utils,test-utils,test_modules,test-modules}/**/*",
           "**.test.{js,jsx,ts,tsx}",
         ],
         rules: {
+          // may use dev deps
           "import/no-extraneous-dependencies": [
             "error",
             {
               devDependencies: true,
             },
           ],
+
+          // let them use `any`, as it's very often used in test files
+          // (e.g. to mock stuff)
+          "@typescript-eslint/no-explicit-any": "off",
         },
       },
 
