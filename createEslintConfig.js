@@ -271,6 +271,9 @@ module.exports = function createEslintConfig({
                 aspects: ["invalidHref", "preferButton"],
               },
             ],
+
+            // I find it useless, and just producing false negatives (e.g. when you want to render `You're`.)
+            "react/no-unescaped-entities": "off",
           }
         : {}),
     },
