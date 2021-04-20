@@ -114,10 +114,12 @@ module.exports = function createEslintConfig({
       "unicorn/no-nested-ternary": "off",
 
       // Use function hoisting to improve code readability
-      "no-use-before-define": [
-        "error",
-        { functions: false, classes: true, variables: true },
-      ],
+      ...(!typescript && {
+        "no-use-before-define": [
+          "error",
+          { functions: false, classes: true, variables: true },
+        ],
+      }),
       ...(typescript && {
         "@typescript-eslint/no-use-before-define": [
           "error",
