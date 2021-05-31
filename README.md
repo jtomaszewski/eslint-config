@@ -19,7 +19,7 @@ With some slight modifications to some of the defaults on our side.
 
 1. Setup eslint as you would normally do.
 
-2. `yarn add -D @ailo/eslint-config eslint @typescript-eslint/parser`
+2. `yarn add -D @ailo/eslint-config eslint @typescript-eslint/parser prettier`
 
 3. Extend the config as in the following example:
 
