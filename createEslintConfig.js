@@ -211,6 +211,15 @@ module.exports = function createEslintConfig({
         "@typescript-eslint/no-unsafe-assignment": "off",
         "@typescript-eslint/no-unsafe-call": "off",
         "@typescript-eslint/no-unsafe-return": "off",
+
+        // Force lines between
+        "@typescript-eslint/lines-between-class-members": [
+          "error",
+          "always",
+          {
+            exceptAfterSingleLine: true
+          }
+        ]
       }),
 
       // Same as https://github.com/airbnb/javascript/blob/63098cbb6c05376dbefc9a91351f5727540c1ce1/packages/eslint-config-airbnb-base/rules/style.js#L339 ,
