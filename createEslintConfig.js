@@ -39,8 +39,6 @@ module.exports = function createEslintConfig({
       "plugin:promise/recommended",
       "plugin:unicorn/recommended",
       "plugin:prettier/recommended",
-      react && "prettier/react",
-      typescript && "prettier/@typescript-eslint",
     ].filter(Boolean),
 
     plugins: [
@@ -217,9 +215,9 @@ module.exports = function createEslintConfig({
           "error",
           "always",
           {
-            exceptAfterSingleLine: true
-          }
-        ]
+            exceptAfterSingleLine: true,
+          },
+        ],
       }),
 
       // Same as https://github.com/airbnb/javascript/blob/63098cbb6c05376dbefc9a91351f5727540c1ce1/packages/eslint-config-airbnb-base/rules/style.js#L339 ,
