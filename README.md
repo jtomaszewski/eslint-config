@@ -19,7 +19,7 @@ With some slight modifications to some of the defaults on our side.
 
 1. Setup eslint as you would normally do.
 
-2. `yarn add -D @jtomaszewski/eslint-config eslint @typescript-eslint/parser prettier`
+2. `yarn add -D @jtomaszewski/eslint-config`
 
 3. Add all peer dependencies of `@jtomaszewski/eslint-config` as dev dependencies in your project. Use `npm info @jtomaszewski/eslint-config peerDependencies` to look them up.
 
