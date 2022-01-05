@@ -44,6 +44,7 @@ module.exports = function createEslintConfig({
     plugins: [
       typescript && "@typescript-eslint/eslint-plugin",
       react && "react-hooks",
+      react && "jsx-a11y",
       jest && "jest",
       cypress && "cypress",
       "promise",
