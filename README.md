@@ -19,9 +19,11 @@ With some slight modifications to some of the defaults on our side.
 
 1. Setup eslint as you would normally do.
 
-2. `yarn add -D @ailo/eslint-config eslint @typescript-eslint/parser prettier`
+2. `yarn add -D @jtomaszewski/eslint-config eslint @typescript-eslint/parser prettier`
 
-3. Extend the config as in the following example:
+3. Add all peer dependencies of `@jtomaszewski/eslint-config` as dev dependencies in your project. Use `npm info @jtomaszewski/eslint-config peerDependencies` to look them up.
+
+4. Extend the config as in the following example:
 
    Node.js service:
 
@@ -32,7 +34,7 @@ With some slight modifications to some of the defaults on our side.
      parserOptions: {
        project: ["./tsconfig.json"],
      },
-     extends: [require.resolve("@ailo/eslint-config/configs/ts-node")],
+     extends: [require.resolve("@jtomaszewski/eslint-config/configs/ts-node")],
    };
    ```
 
@@ -42,7 +44,7 @@ With some slight modifications to some of the defaults on our side.
    // .eslintrc.js
    module.exports = {
      parser: "babel-eslint",
-     extends: [require.resolve("@ailo/eslint-config/configs/node")],
+     extends: [require.resolve("@jtomaszewski/eslint-config/configs/node")],
    };
    ```
 
@@ -55,7 +57,7 @@ With some slight modifications to some of the defaults on our side.
      parserOptions: {
        project: ["./tsconfig.json"],
      },
-     extends: [require.resolve("@ailo/eslint-config/configs/ts-react")],
+     extends: [require.resolve("@jtomaszewski/eslint-config/configs/ts-react")],
    };
    ```
 
@@ -68,11 +70,13 @@ With some slight modifications to some of the defaults on our side.
      parserOptions: {
        project: ["./tsconfig.json"],
      },
-     extends: [require.resolve("@ailo/eslint-config/configs/ts-cypress")],
+     extends: [
+       require.resolve("@jtomaszewski/eslint-config/configs/ts-cypress"),
+     ],
    };
    ```
 
-   Replace `ts-node` with other name of another [config file](https://github.com/ailohq/ailo-eslint-config/tree/master/configs) if your environment differs.
+   Replace `ts-node` with other name of another [config file](https://github.com/jtomaszewski/eslint-config/tree/master/configs) if your environment differs.
 
 ## Adding it to existing codebase
 

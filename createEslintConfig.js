@@ -151,14 +151,6 @@ module.exports = function createEslintConfig({
 
       "unicorn/no-for-loop": "off",
 
-      // This is cool, but in Ailo we use local path mappings a lot
-      // and it would be tricky to force it in all the repos.
-      "import/no-cycle": "off",
-
-      // It's nice as it pushes the dev to not write class-based code,
-      // but this would invalidate e.g. all of Ailo Repository classes.
-      "class-methods-use-this": "off",
-
       // Contradicts `consistent-return` rule if we actally have a fn
       // that returns something like `string | undefined`.
       "unicorn/no-useless-undefined": "off",
