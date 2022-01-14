@@ -1,7 +1,7 @@
 {
   "name": "@jtomaszewski/eslint-config",
   "main": "configs/ts-node.js",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "repository": "https://github.com/jtomaszewski/eslint-config",
   "license": "MIT",
   "bin": {
