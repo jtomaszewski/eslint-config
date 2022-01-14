@@ -141,6 +141,9 @@ module.exports = function createEslintConfig({
         },
       ],
 
+      // This is still "too beta" - node protocol isn't well supported by many tools like typescript, webpack, older node versions etc.
+      "unicorn/prefer-node-protocol": "off",
+
       // Common abbreviations are known and readable
       "unicorn/prevent-abbreviations": "off",
 
